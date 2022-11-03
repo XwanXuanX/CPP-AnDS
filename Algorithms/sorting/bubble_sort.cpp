@@ -28,15 +28,16 @@ void BubbleSort(int* Arr, int Arr_len)
 
 int main()
 {
-    int Arr[10] = {3, 54, 23, 78, 1, 0, 43, 65, 76, 9};
+    int Arr[] = {3, 54, 23, 78, 1, 0, 43, 65, 76, 9};
+    int Arr_len = sizeof(Arr) / sizeof(Arr[0]);
 
     std::cout << "Before sorting: " << std::endl;
-    PrintArray(Arr, 10);
+    PrintArray(Arr, Arr_len);
 
-    BubbleSort(Arr, 10);    // Sorted used Bubble Sort
+    BubbleSort(Arr, Arr_len);    // Sorted used Bubble Sort
 
     std::cout << "After sorting: " << std::endl;
-    PrintArray(Arr, 10);
+    PrintArray(Arr, Arr_len);
 
     return 0;
 }
