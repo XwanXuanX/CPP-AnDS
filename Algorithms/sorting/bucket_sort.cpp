@@ -11,30 +11,16 @@ void PrintArray(int* Arr, int Arr_len)
 
 void BucketSort(int* Arr, int Arr_len, int NumOfBuckets)
 {
-    // Max and min element in array
-    int max = Arr[0];
-    int min = Arr[0];
-    for(int i = 0; i < Arr_len; i++)
-    {
-        if(Arr[i] > max)
-            max = Arr[i];
-        if(Arr[i] < min)
-            min = Arr[i];
-    }
-
-    // Range of the array
-    float range = (float)((max - min) / NumOfBuckets);
-
     // Create buckets: dynamically allocation
     std::vector<int>* buckets = new std::vector<int>[NumOfBuckets];
 
     // Scatter array elements in buckets
     for(int i = 0; i < Arr_len; i++)
     {
-        int index = (int)((Arr[i] - min) / range);
+        int index = Arr[i] / 10;
         buckets[index].push_back(Arr[i]);
     }
-
+    
     // Sort each bucket
     for(int i = 0; i < NumOfBuckets; i++)
     {
@@ -64,7 +50,7 @@ int main()
     std::cout << "Before sorting: " << std::endl;
     PrintArray(Arr, Arr_len);
 
-    BucketSort(Arr, Arr_len, 5);    // Sort using bucket sort
+    BucketSort(Arr, Arr_len, 10);    // Sort using bucket sort
 
     std::cout << "After sorting: " << std::endl;
     PrintArray(Arr, Arr_len);
