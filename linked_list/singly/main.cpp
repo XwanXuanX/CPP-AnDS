@@ -28,5 +28,8 @@ int main()
     list->print();
     list->reverse();
     list->print();
+
+    delete list, list2;
+    list = list2 = nullptr;
     return 0;
 }
