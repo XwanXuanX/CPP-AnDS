@@ -195,29 +195,31 @@ public:
             }
             tail = tail->next;
         }
-        // last check for last element
-        if(p_head->data > p_other->data)
+        while(p_head != head && p_other != other.head)
         {
-            tail->next = p_other;
-            p_other = p_other->next;
+            // last check for last element        
+            if(p_head->data > p_other->data)
+            {
+                tail->next = p_other;
+                p_other = p_other->next;
+            }
+            else
+            {
+                tail->next = p_head;
+                p_head = p_head->next;
+            }
+            tail = tail->next;
         }
-        else
-        {
-            tail->next = p_head;
-            p_head = p_head->next;
-        }
-        tail = tail->next;
-
         // check if list is empty
         // move to the last element
         // (!!! BEWARE of short-hand evaluation)
-        if(tail->next != head)
+        if(p_head != head)
         {
             tail->next = p_head;
             while(tail->next != head)
                 tail = tail->next;
         }
-        else if(tail->next != other.head)
+        else if(p_other != other.head)
         {
             tail->next = p_other;
             while(tail->next != other.head)
